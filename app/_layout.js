@@ -4,6 +4,11 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import { useTheme,  PaperProvider ,configureFonts, MD2LightTheme} from "react-native-paper";
+import { store } from '../store';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -28,12 +33,19 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Provider store={store}>
+    <PaperProvider >
+      <SafeAreaView style={{
+        flex:1,
+        backgroundColor : 'white'
+      }}>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    </PaperProvider>
+    </Provider>
   );
 }

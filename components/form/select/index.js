@@ -1,11 +1,12 @@
 import React, {  useEffect, useState } from "react";
 import {TextInput } from 'react-native-paper'
 import { Text, View,TouchableOpacity,StyleSheet } from "react-native";
-import AppConstants from "../../../config/constants";
-import style from "./style";
+
 import { HelperText } from "react-native-paper";
 import {Dropdown} from "react-native-paper-dropdown";
 import {Colors} from "../../../constants/Colors";  
+
+
 
 export default ({
   title,
@@ -32,7 +33,7 @@ export default ({
        setItems(list.map(s=>{
          return {
            label: s.label?.toString(),
-           value: Utilities.Data.IsValidNumber(s.value) ? parseInt(s.value) : s.value?.toString()
+           value: s.value
          }
        }))
     }  
@@ -50,7 +51,7 @@ export default ({
               visible={open}
               showDropDown={() => setOpen(true)}
               onDismiss={() => setOpen(false)}
-              value={ Utilities.Data.IsValidNumber(value) ?  parseInt(value)  : value}
+              value={value}
               onSelect={onChange}
               options={Items}
                CustomDropdownItem={({ option, value, width ,onSelect,toggleMenu,isLast}) => (
@@ -71,8 +72,8 @@ export default ({
                 >
                 <Text style={{
                    color: value==option.value ? 
-                          'black' :
-                           Colors.Text ,
+                            Colors.light.text:
+                            Colors.light.borderColor ,
                    minWidth: width ,
                    textAlign: 'left',
                    fontSize : 16,
@@ -87,17 +88,17 @@ export default ({
                 <View
                 style={{
                   width : '100%',
-                  height : 50,
+                  height : 45,
                   alignItems : 'center',
                   justifyContent : 'center',
-                  backgroundColor :Colors.Text
+                  backgroundColor :'white'
                 }}
                 >
                   <Text
                   style={{
-                    color :'white',
+                    color :'black',
                     fontSize : 16,
-                    
+                    fontWeight : 'bold'
                 }}
                   >
                     {getLabel()}
