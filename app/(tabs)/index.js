@@ -61,7 +61,7 @@ export default function HomeScreen() {
                     keyboardShouldPersistTaps="handled"
                     showsVerticalScrollIndicator={false}
                     extraScrollHeight={Platform.OS === 'ios' ? 100 : 0}
-                    contentContainerStyle={{ paddingBottom: 200 ,backgroundColor :'white'}}
+                    contentContainerStyle={{ backgroundColor :'white'}}
                     >
               
                   <View
@@ -228,21 +228,33 @@ const styles = StyleSheet.create({
     height : height * 0.3,
     position : 'relative',
     overflow : 'hidden',
-    borderBottomLeftRadius : 20,
-    borderBottomRightRadius : 20,
     backgroundColor : '#A1CEDC',
     justifyContent : 'center',
     alignItems : 'center',
     marginBottom :30
   },
   body: {
-    width : '95%',
+    width : '100%',
+    flex:1,
+    backgroundColor : "white",
+    marginTop : -30,
     alignSelf  :'center',
     padding: 20,
-    gap: 16,
+    paddingBottom: 200 ,
+    gap: 10,
     borderWidth : 1,
     borderColor : '#dddd',
-    borderRadius : 20
+    borderTopLeftRadius : 20,
+    borderTopRightRadius : 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
  
   },
   stepContainer: {
@@ -262,7 +274,7 @@ const styles = StyleSheet.create({
     justifyContent : 'space-between'
   },
   submitBtn :{
-    width : '80%',
+    width : '100%',
     alignSelf : 'center',
     height : 50,
     borderRadius : 10,
