@@ -33,7 +33,7 @@ const Input = ({
 
 
   return (
-    <View style={[{ height: 45 }, containerStyle]}>
+    <View style={[{ height:error ? 55 : 45 }, containerStyle]}>
       <TextInput
         mode={mode}
         label={label}

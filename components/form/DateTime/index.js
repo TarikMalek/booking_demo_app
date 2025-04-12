@@ -12,6 +12,8 @@ import {
 import DateTimePicker from '@react-native-community/datetimepicker';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import moment from 'moment-timezone';
+import {  HelperText } from "react-native-paper";
+import BottomSheet from './iOSBottomSheet';   
 const {width} = Dimensions.get('window');
 
 export default ({
@@ -21,16 +23,20 @@ export default ({
     mode,
     minimumValue,
     maximumValue,
-    containerStyle={}
+    containerStyle={},
+    error,
+    helperText,
+    minuteInterval=1
 })=>{
     const [showAndroidDateTime , setShowAndroidDateTime] = useState(false);
+    const [showIosSheet, setShowIosSheet] = useState(false);
 
     const GetIcon = ()=>{
         switch(mode){
             case 'date':
-                return <MaterialIcons name="date-range" size={20} color="black" />
+                return <MaterialIcons name="date-range" size={20} color={error?'red' : "black"} />
             case 'time':
-                return <MaterialIcons name="access-time" size={20} color="black" />
+                return <MaterialIcons name="access-time" size={20} color={error?'red' : "black"} />
         }
     };
 
@@ -53,7 +59,7 @@ export default ({
             style={styles.row}
             onPress={()=>{
                 if (Platform.OS == 'ios'){
-                    
+                    setShowIosSheet(true)
                 } else {
                     setShowAndroidDateTime(true);
                 }
@@ -91,9 +97,29 @@ export default ({
              }}
              minimumDate={minimumValue}
              maximumDate={maximumValue}
+             minuteInterval={minuteInterval}
              />
             }
-
+            {helperText && (
+            <HelperText type="error" visible={error}>
+            {helperText}
+            </HelperText>
+            )}
+            <BottomSheet
+            visible={showIosSheet}
+            onClose={() => setShowIosSheet(false)}
+            value={value ?? new Date()}
+            mode={mode}
+            SetDate={(date)=>{
+                if (date ) {
+                    SetDate(date);
+                }
+               
+             }}
+            minimumDate={minimumValue}
+            maximumDate={maximumValue}
+            minuteInterval={minuteInterval}
+        />
         </View>
     )
 }

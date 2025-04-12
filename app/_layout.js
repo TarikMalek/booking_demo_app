@@ -33,7 +33,7 @@ export default function RootLayout() {
   }
 
   return (
-    <Provider store={store}>
+    <Provider store={store} theme={MD2LightTheme}>
     <PaperProvider >
       <SafeAreaView style={{
         flex:1,

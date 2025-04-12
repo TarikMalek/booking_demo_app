@@ -122,6 +122,6 @@ export default ({
 
 const styles = StyleSheet.create({
     container : {
-        marginVertical : 10,
+        // marginVertical : 10,
     }
 })
