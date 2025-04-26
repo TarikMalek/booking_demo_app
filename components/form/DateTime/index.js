@@ -89,7 +89,6 @@ export default ({
              display='spinner'
              onChange={(event,date)=>{
                 if (date ) {
-                    console.log('date',date);
                     SetDate(date);
                     setShowAndroidDateTime(false);
                 }

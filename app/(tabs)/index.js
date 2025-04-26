@@ -14,9 +14,9 @@ import { useRouter } from 'expo-router';
 import { HelloWave } from '@/components/HelloWave';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import Select from '../../components/form/select';
-import DateTimeField from '../../components/form/DateTime';
-import Input from '../../components/form/Input';
+import Select from '@/components/form/select';
+import DateTimeField from '@/components/form/DateTime';
+import Input from '@/components/form/Input';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { addSlot } from '../../store/actions';
 import { useSelector ,useDispatch} from 'react-redux';
@@ -127,14 +127,11 @@ export default function HomeScreen() {
                         <HelloWave />
                       </ThemedView>
                       <ThemedView style={styles.stepContainer}>
-                        <ThemedText type="subtitle">Add a new booking slot</ThemedText>
+                        <ThemedText type="subtitle">Generate slots</ThemedText>
 
                       </ThemedView>
 
-                      
-                       
-
-
+                  
                         <View
                         style={styles.row}
                         >

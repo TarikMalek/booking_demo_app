@@ -19,8 +19,8 @@ const AnimatedBottomSheet = ({
   value,
   mode = 'date',
   SetDate,
-  minimumValue,
-  maximumValue,
+  minimumDate,
+  maximumDate,
   minuteInterval,
 }) => {
   const translateY = useRef(new Animated.Value(height)).current;
@@ -70,13 +70,12 @@ const AnimatedBottomSheet = ({
           display="spinner"
           onChange={(event, date) => {
             if (date) {
-              console.log('date', date);
               SetDate(date);
               onClose(); // hide on success
             }
           }}
-          minimumDate={minimumValue}
-          maximumDate={maximumValue}
+          minimumDate={minimumDate}
+          maximumDate={maximumDate}
           minuteInterval={minuteInterval}
         />
       </Animated.View>
